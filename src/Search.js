@@ -72,7 +72,7 @@ export default function Search(props) {
     setCityToDisplay(DEFAULT_CITY);
     fetchWeather(DEFAULT_CITY);
     fetchLocalTime(DEFAULT_CITY);
-  }, [fetchWeather]);
+  }, []);
 
   return (
 
