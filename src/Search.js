@@ -68,12 +68,11 @@ export default function Search(props) {
   };
 
   useEffect(() => {
-    const defaultCity = "Lynnwood";
-    setCity(defaultCity);
-    setCityToDisplay(defaultCity);
-    fetchWeather(defaultCity);
-    fetchLocalTime(defaultCity);
-  }, []);
+    setCity(DEFAULT_CITY);
+    setCityToDisplay(DEFAULT_CITY);
+    fetchWeather(DEFAULT_CITY);
+    fetchLocalTime(DEFAULT_CITY);
+  }, [fetchWeather]);
 
   return (
 
