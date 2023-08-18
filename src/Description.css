@@ -1,0 +1,10 @@
+.Description h1 {
+    font-size: 22px;
+    font-weight: 400;
+    margin: 0;
+  }
+  
+  .Description #description {
+    text-transform: capitalize;
+  }
+  

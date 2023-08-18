@@ -1,0 +1,23 @@
+.CurrentWeather #weather-icon {
+    margin-right: 10px;
+    max-width: 80px;
+  }
+  
+  .CurrentWeather .weather-temperature .active {
+    color: #70757a;
+    cursor: default;
+  }
+  
+  .CurrentWeather .weather-temperature strong {
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1;
+  }
+  
+  .CurrentWeather .weather-temperature .units {
+    font-size: 18px;
+    position: relative;
+    left: 6px;
+    color: #70757a;
+  }
+  
