@@ -70,7 +70,6 @@ export default function Search(props) {
   return (
 
     <div className="Search">
-        
       <form action="" id="search-form" class="input-group mb-3">
         <input
           type="search"
