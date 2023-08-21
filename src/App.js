@@ -16,7 +16,7 @@ export default function App() {
            city3="Podgorica"
            city4="Anchorage"/>
         </div>
-         <p><small><a href="https://github.com/Julia-JB/weather-react">Open-source code</a> by Yuliia Batsheva</small></p>
+         <p><small><a href="https://github.com/Julia-JB/weather-react" target="blank">Open-source code</a> by Yuliia Batsheva</small></p>
       </div>
     </div>
   );
