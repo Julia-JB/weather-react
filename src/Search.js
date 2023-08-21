@@ -8,7 +8,6 @@ import Description from "./Description";
 import DefaultCities from "./DefaultCities";
 
 export default function Search(props) {
-  const DEFAULT_CITY = "Lynnwood";
   let [city, setCity] = useState("");
   let [temperature, setTemperature] = useState("");
   let [cityToDisplay, setCityToDisplay] = useState("");
@@ -30,12 +29,6 @@ export default function Search(props) {
       setWind(response.data.wind.speed);
       setDescription(response.data.condition.description);
       setIcon(response.data.condition.icon_url);
-    })
-    .catch((error) => {
-        console.error("Error fetching weather data:", error);
-        setCityToDisplay(DEFAULT_CITY)
-        fetchWeather(DEFAULT_CITY);
-        fetchLocalTime(DEFAULT_CITY)
     })
   }
 
@@ -68,10 +61,10 @@ export default function Search(props) {
   };
 
   useEffect(() => {
-    setCity(DEFAULT_CITY);
-    setCityToDisplay(DEFAULT_CITY);
-    fetchWeather(DEFAULT_CITY);
-    fetchLocalTime(DEFAULT_CITY);
+    setCity("Lynnwood");
+    setCityToDisplay("Lynnwood");
+    fetchWeather("Lynnwood");
+    fetchLocalTime("Lynnwood");
   }, []);
 
   return (
