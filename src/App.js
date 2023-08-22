@@ -10,11 +10,12 @@ export default function App() {
     <div className="App">
       <div className="weather-app-wrapper">
         <div className="weather-app mb-3">
-          <Search 
-           city1="Kyiv"
-           city2="Seattle"
-           city3="Podgorica"
-           city4="Anchorage"/>
+          <Search
+            defaultCity = "Lynnwood" 
+            city1="Kyiv"
+            city2="Seattle"
+            city3="Podgorica"
+            city4="Anchorage"/>
         </div>
          <p><small><a href="https://github.com/Julia-JB/weather-react" target="_blank" rel="noreferrer">Open-source code</a> by Yuliia Batsheva</small></p>
       </div>

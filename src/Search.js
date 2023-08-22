@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 
@@ -9,15 +9,13 @@ import DefaultCities from "./DefaultCities";
 
 export default function Search(props) {
 
-  const [city, setCity] = useState("");
+  const [city, setCity] = useState(props.defaultCity);
   const [time, setTime] = useState("");
   const [weatherData, setWeatherData] = useState({ready: false});
 
 
   function handleResponse(response) {
-    console.log(response);
     setWeatherData({
-      ready: true,
       city: response.data.city,
       cityToDisplay: response.data.city,
       temperature: Math.round(response.data.temperature.current),
@@ -26,6 +24,7 @@ export default function Search(props) {
       wind: response.data.wind.speed,
       description: response.data.condition.description,
       icon: response.data.condition.icon_url,
+      ready: true
     })
   }
 
@@ -61,12 +60,6 @@ export default function Search(props) {
     fetchLocalTime(cityName);
   };
 
-  useEffect(() => {
-    setCity("Lynnwood");
-    fetchWeather("Lynnwood");
-    fetchLocalTime("Lynnwood");
-  }, []);
-
   if (weatherData.ready) {
   return (
     <div className="Search">
@@ -100,10 +93,12 @@ export default function Search(props) {
     </div>
   );
 } else {
+  fetchWeather(city);
+  fetchLocalTime(city);
   return (
     <div>
       <p>
-        Loading...
+       Loading...
       </p>
       </div>
     
