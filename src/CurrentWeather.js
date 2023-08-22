@@ -1,25 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 
 import "./CurrentWeather.css";
 
 export default function CurrentWeather(props) {
-  // eslint-disable-next-line
+  useEffect(() => {
+    setIsCelsius(false);
+    setTemperature(Math.round(props.temperature));
+  }, [props.temperature]);
+
+  const [isCelsius, setIsCelsius] = useState(false);
   const [temperature, setTemperature] = useState(props.temperature);
-  const [isCelsius, setIsCelsius] = useState(true);
+
 
   function showFahrenheit(event) {
     event.preventDefault();
-    const fahrenheitTemp = Math.round(props.temperature * (9 / 5) + 32);
-    setTemperature(fahrenheitTemp);
-    setIsCelsius(false);
+    setTemperature(Math.round(props.temperature * (9 / 5) + 32));
+    setIsCelsius(true);
   }
 
   function showCelsius(event) {
     event.preventDefault();
     setTemperature(Math.round(props.temperature));
-    setIsCelsius(true);
+    setIsCelsius(false);
   }
 
   return (
@@ -29,13 +33,13 @@ export default function CurrentWeather(props) {
           <div className="d-flex align-items-center">
             <img id="weather-icon" src={props.icon} alt="weather icon" />
             <div className="d-inline-flex weather-temperature">
-              <strong id="temperature">{Math.round(props.temperature)}</strong>
+              <strong id="temperature">{temperature}</strong>
               <span className="units">
-                <a href="/" id="celsiusLink" onClick={showCelsius}  className={isCelsius ? 'active' : ''}>
+                <a href="/" id="celsiusLink" onClick={showCelsius} className={!isCelsius ? 'active' : ''}>
                   °C{" "}
                 </a>
                 |
-                <a href="/" id="fahrenheitLink" onClick={showFahrenheit} className={!isCelsius ? 'active' : ''}>
+                <a href="/" id="fahrenheitLink" onClick={showFahrenheit} className={isCelsius ? 'active' : ''}>
                   °F
                 </a>
               </span>
