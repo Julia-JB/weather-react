@@ -8,28 +8,31 @@ import Description from "./Description";
 import DefaultCities from "./DefaultCities";
 
 export default function Search(props) {
-  let [city, setCity] = useState("");
-  let [temperature, setTemperature] = useState("");
-  let [cityToDisplay, setCityToDisplay] = useState("");
-  let [feelsLike, setFeelsLike] = useState("");
-  let [humidity, setHumidity] = useState("");
-  let [wind, setWind] = useState("");
-  let [description, setDescription] = useState("");
-  let [icon, setIcon] = useState("");
-  let [time, setTime] = useState("");
+
+  const [city, setCity] = useState("");
+  const [time, setTime] = useState("");
+  const [weatherData, setWeatherData] = useState({ready: false});
+
+
+  function handleResponse(response) {
+    console.log(response);
+    setWeatherData({
+      ready: true,
+      city: response.data.city,
+      cityToDisplay: response.data.city,
+      temperature: Math.round(response.data.temperature.current),
+      feelsLike: Math.round(response.data.temperature.feels_like),
+      humidity: response.data.temperature.humidity,
+      wind: response.data.wind.speed,
+      description: response.data.condition.description,
+      icon: response.data.condition.icon_url,
+    })
+  }
 
   function fetchWeather(city) {
     let apiKey = "202e46o709dd7b61a1effa0ftf78e03d";
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
-
-    axios.get(apiUrl).then((response) => {
-      setTemperature(Math.round(response.data.temperature.current));
-      setFeelsLike(Math.round(response.data.temperature.feels_like));
-      setHumidity(response.data.temperature.humidity);
-      setWind(response.data.wind.speed);
-      setDescription(response.data.condition.description);
-      setIcon(response.data.condition.icon_url);
-    })
+    axios.get(apiUrl).then(handleResponse); 
   }
 
   function fetchLocalTime(city) {
@@ -44,7 +47,6 @@ export default function Search(props) {
     event.preventDefault();
     fetchWeather(city);
     fetchLocalTime(city);
-    setCityToDisplay(city);
   }
 
   function handleChange(event) {
@@ -57,20 +59,18 @@ export default function Search(props) {
     setCity(cityName);
     fetchWeather(cityName);
     fetchLocalTime(cityName);
-    setCityToDisplay(cityName);
   };
 
   useEffect(() => {
     setCity("Lynnwood");
-    setCityToDisplay("Lynnwood");
     fetchWeather("Lynnwood");
     fetchLocalTime("Lynnwood");
   }, []);
 
+  if (weatherData.ready) {
   return (
-
     <div className="Search">
-      <form action="" id="search-form" class="input-group mb-3">
+      <form action="" id="search-form" className="input-group mb-3">
         <input
           type="search"
           placeholder="City"
@@ -78,7 +78,7 @@ export default function Search(props) {
           id="city-input"
           onChange={handleChange}
         />
-        <button class="btn btn-style" type="submit" onClick={handleClick}>
+        <button className="btn btn-style" type="submit" onClick={handleClick}>
           Go
         </button>
       </form>
@@ -88,16 +88,25 @@ export default function Search(props) {
             city3="Podgorica"
             city4="Anchorage"
             handleCityClick={handleClickDefault}
-/>
-      <CurrentWeather
-        temperature={temperature}
-        icon={icon}
-        feelsLike={feelsLike}
-        humidity={humidity}
-        wind={wind}
       />
-
-      <Description city={cityToDisplay} description={description} time={time} />
+      <CurrentWeather
+        temperature={weatherData.temperature}
+        icon={weatherData.icon}
+        feelsLike={weatherData.feelsLike}
+        humidity={weatherData.humidity}
+        wind={weatherData.wind}
+      />
+      <Description city={weatherData.cityToDisplay} country={weatherData.country} description={weatherData.description} time={time} />
     </div>
   );
+} else {
+  return (
+    <div>
+      <p>
+        Loading...
+      </p>
+      </div>
+    
+  )
+}
 }
