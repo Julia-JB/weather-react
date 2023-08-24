@@ -14,7 +14,7 @@ export default function Description(props) {
     }
   }
   return (
-    <div className="Description ms-3">
+    <div className="Description">
       <div className="row">
         <div className="col-md-6">
           <h1 id="city" >

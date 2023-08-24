@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import Weather from "./Weather";
 import "./styles.css";
-import CurrentWeather from "./CurrentWeather";
+
 
 
 export default function App() {
