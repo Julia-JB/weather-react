@@ -1,0 +1,19 @@
+.Weather .btn-style {
+    color: white;
+    background: #4d84eb;
+    font-size: 16px;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+  }
+  
+  .Weather .btn-style:hover {
+    background-color: #246bce;
+    transition: 0.7s;
+    color: white;
+  }
+  
+  h3 {
+    text-align: center;
+  }
+  

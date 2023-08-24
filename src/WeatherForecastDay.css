@@ -1,0 +1,16 @@
+.weather-forecast-temperatures {
+  font-size: 13px;
+}
+
+.weather-forecast-minimum {
+  color: #70757a;
+  padding: 4px;
+}
+
+.weather-forecast-date {
+  line-height: 14px;
+}
+
+.weather-forecast-img {
+  max-width: 50px;
+}
