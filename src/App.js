@@ -1,8 +1,9 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
-import Search from "./Search";
+import Weather from "./Weather";
 import "./styles.css";
+import CurrentWeather from "./CurrentWeather";
 
 
 export default function App() {
@@ -10,7 +11,7 @@ export default function App() {
     <div className="App">
       <div className="weather-app-wrapper">
         <div className="weather-app mb-3">
-          <Search
+          <Weather
             defaultCity = "Lynnwood" 
             city1="Kyiv"
             city2="Seattle"
