@@ -5,14 +5,13 @@ import "bootstrap/dist/js/bootstrap.js";
 import "./CurrentWeather.css";
 
 export default function CurrentWeather(props) {
+  const [isCelsius, setIsCelsius] = useState(false);
+  const [temperature, setTemperature] = useState(props.temperature);
+
   useEffect(() => {
     setIsCelsius(false);
     setTemperature(Math.round(props.temperature));
   }, [props.temperature]);
-
-  const [isCelsius, setIsCelsius] = useState(false);
-  const [temperature, setTemperature] = useState(props.temperature);
-
 
   function showFahrenheit(event) {
     event.preventDefault();

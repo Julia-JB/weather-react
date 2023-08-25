@@ -41,6 +41,6 @@ export default function WeatherForecast(props) {
             </div>
           );
       } else {
-        <div>Loading</div>
+        return <div>Loading</div>
       }
 }

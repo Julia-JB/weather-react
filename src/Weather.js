@@ -33,10 +33,6 @@ export default function Weather(props) {
     let apiKey = "202e46o709dd7b61a1effa0ftf78e03d";
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
     axios.get(apiUrl).then(handleResponse)
-    .catch(error => {
-      console.error("Error fetching weather data:", error);
-      fetchWeather("Lynnwood")
-    })
   }
 
   function fetchLocalTime(city) {
@@ -44,10 +40,7 @@ export default function Weather(props) {
     let timeUrl = `https://api.ipgeolocation.io/timezone?apiKey=${apiKeyTime}&location=${city}`;
     axios.get(timeUrl).then((response) => {
       setTime(response.data.date_time_txt);
-    })
-    .catch(error => {
-      fetchLocalTime("Lynnwood")
-    })
+    });
   }
 
   function handleClick(event) {
@@ -103,7 +96,7 @@ export default function Weather(props) {
   );
 } else {
   fetchWeather(city);
-  fetchLocalTime(city);
+  // fetchLocalTime(city);
   return (
     <div>
       <p>
