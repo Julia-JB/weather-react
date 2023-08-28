@@ -21,8 +21,7 @@ export default function WeatherForecastDay(props) {
      }
 
     return (
-    <div className="row mt-3 justify-content-between">
-    <div className="col-2 text-center forecast-card">
+    <div className="col">
         <div className="weather-forecast-date">{date()}</div>
         <img  className="weather-forecast-img" src={props.data.condition.icon_url} alt=""/>
         <div className="weather-forecast-temperatures">
@@ -30,6 +29,5 @@ export default function WeatherForecastDay(props) {
         <span className="weather-forecast-minimum">{minTemperature()}°</span>
         </div>
     </div>
-</div>
     )
 }

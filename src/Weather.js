@@ -96,7 +96,7 @@ export default function Weather(props) {
   );
 } else {
   fetchWeather(city);
-  // fetchLocalTime(city);
+  fetchLocalTime(city);
   return (
     <div>
       <p>
